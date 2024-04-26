@@ -39,6 +39,8 @@ class BinaryTree:
         print(self.custom_list[index])
 
     def levelOrder(self,index):
+        for i in range(index,self.lastusedindex +1):
+            print(self.custom_list[i], end=" ")
 
 
 newBT= BinaryTree(6)
@@ -53,3 +55,4 @@ print(newBT.searchNode("N5"))
 # print(newBT.preOrderTraverse(1))
 print(newBT.inOrderTraverse(1))
 print(newBT.postOrderTraversal(1))
+print(newBT.levelOrder(1))
