@@ -42,6 +42,27 @@ class BinaryTree:
         for i in range(index,self.lastusedindex +1):
             print(self.custom_list[i], end=" ")
 
+    def  getHeight(self,index=0):
+        if index>self.lastusedindex :
+            return 0
+        else:
+            # Return the maximum of the left and right heights plus one.
+            return max(self.getHeight(2*index+1), self.getHeight(2*index+2))+1
+
+    def deleteNode(self,value):
+        if self.lastusedindex ==0:
+            return "No Nodes"
+        for i in range(1,self.lastusedindex+1):
+            if value==self.custom_list[i]:
+                self.custom_list[i]=self.custom_list[self.lastusedindex]
+                self.custom_list[self.lastusedindex]=None
+                self.lastusedindex-=1
+                return "Deleted"
+            
+    def deleteTree(self):
+        self.custom_list= None
+        return "Tree deleted"
+        
 
 newBT= BinaryTree(6)
 newBT.insertNode("N1")
@@ -56,3 +77,4 @@ print(newBT.searchNode("N5"))
 print(newBT.inOrderTraverse(1))
 print(newBT.postOrderTraversal(1))
 print(newBT.levelOrder(1))
+print(newBT.getHeight(1))

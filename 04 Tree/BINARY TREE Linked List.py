@@ -145,6 +145,14 @@ def insertNode(root, newNode):
                 queue.append(current_node.rightChild)
 
 
+def heightOfTree(root):
+    """Returns the height of a binary tree"""
+    if not root:
+        return 0
+    
+    return 1 + max(heightOfTree(root.rightChild), heightOfTree(root.leftChild))
+
+
 def getDeepestNode(root):
     if  not root:
         return 
@@ -224,3 +232,4 @@ N3.rightChild = N7
 print(insertNode(N1,g))
 print(print_tree(N1))
 print(getDeepestNode(N1))
+print(heightOfTree(N1))
