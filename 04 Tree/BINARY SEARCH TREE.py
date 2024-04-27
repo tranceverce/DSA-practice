@@ -119,8 +119,36 @@ def searchNode(root,value):
         else:
             searchNode(root.rightChild ,value)
 
+
+def minValueNode(root):
+    current = root
+    while current.leftChild is not None:
+        current=current.leftChild
+    return current
+
+
 def deleteNode(root,value):
-    
+    if root is None:
+        return root
+    if value<root.data:
+        root.leftChild=deleteNode(root.leftChild,value)
+    elif(value>root.data):
+        root.rightChild=deleteNode(root.rightChild,value)
+    else:
+        if root.leftChild is None:
+            temp = root.rightChild
+            root = None
+            return temp
+        
+        if root.rightChild is None:
+            temp = root.leftChild
+            root = None
+            return temp
+        
+        temp=minValueNode(root.rightChild)
+        root.data =temp.data
+        root.rightChild=deleteNode(root.rightChild,temp.data)
+    return root
 
 root = BSTNode(None)
 
@@ -130,4 +158,6 @@ for node in nodes:
 
 # print(preOrderTraverse(root))
 # print(levelOrderTraversal(root))
-print(searchNode(root,22))
+print(print_tree(root,22))
+deleteNode(root,22)
+print(print_tree(root))
