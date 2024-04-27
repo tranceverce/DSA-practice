@@ -76,7 +76,7 @@ def postOrderTraversal(root):
     print(root.data)
 
 
-def levelOrder(root):
+def levelOrderTraversal(root):
     """
     Perform a level-order traversal of the tree and print each node's data.
     

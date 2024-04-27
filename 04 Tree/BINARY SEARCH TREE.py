@@ -1,3 +1,5 @@
+from collections import deque
+
 class BSTNode:
     def __init__(self,data):
         self.leftChild = None
@@ -82,7 +84,43 @@ def postOrderTraversal(root):
     postOrderTraversal(root.rightChild)
     print(root.data)
 
+def levelOrderTraversal(root):
+    """
+    Perform a level-order traversal of the tree and print each node's data.
+    
+    Level-order traversal visits nodes level by level from top to bottom.
+    
+    Parameters:
+    - root: the root TreeNode of the tree.
+    """
+    if root is None:
+        return
+    queue = deque([root])
+    while queue:
+        current_node = queue.popleft()
+        print(current_node.data)
+        if current_node.leftChild:
+            queue.append(current_node.leftChild)
+        if current_node.rightChild:
+            queue.append(current_node.rightChild)
 
+
+def searchNode(root,value):
+    if root.data == value:
+        print("Found")
+    elif  root.data > value:
+        if root.leftChild.data == value :
+            print("Found")
+        else:
+            searchNode(root.leftChild ,value)
+    else:
+        if root.rightChild.data == value :
+            print("Found")
+        else:
+            searchNode(root.rightChild ,value)
+
+def deleteNode(root,value):
+    
 
 root = BSTNode(None)
 
@@ -90,4 +128,6 @@ nodes = [7,30, 8, 1, 6,34,22,45]
 for node in nodes:
     insertNode(root, node)
 
-print(preOrderTraverse(root))
+# print(preOrderTraverse(root))
+# print(levelOrderTraversal(root))
+print(searchNode(root,22))
