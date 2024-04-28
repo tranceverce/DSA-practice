@@ -31,11 +31,11 @@ class BinaryTree:
         print(self.custom_list[index] )
         self.inOrderTraverse(2 * index + 1)
 
-    def postOrderTraversal(self,index):
+    def postOrderTraverse(self,index):
         if index > self.lastusedindex:
             return
-        self.inOrderTraverse(2 * index)
-        self.inOrderTraverse(2 * index + 1)
+        self.postOrderTraverse(2 * index)
+        self.postOrderTraverse(2 * index + 1)
         print(self.custom_list[index])
 
     def levelOrder(self,index):
@@ -75,6 +75,6 @@ newBT.insertNode("N5")
 print(newBT.searchNode("N5"))
 # print(newBT.preOrderTraverse(1))
 print(newBT.inOrderTraverse(1))
-print(newBT.postOrderTraversal(1))
+print(newBT.postOrderTraverse(1))
 print(newBT.levelOrder(1))
 print(newBT.getHeight(1))
