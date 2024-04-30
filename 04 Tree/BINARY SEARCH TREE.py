@@ -150,6 +150,7 @@ def deleteNode(root,value):
         root.rightChild=deleteNode(root.rightChild,temp.data)
     return root
 
+
 root = BSTNode(None)
 
 nodes = [7,30, 8, 1, 6,34,22,45]
